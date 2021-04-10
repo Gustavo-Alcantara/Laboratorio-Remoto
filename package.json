@@ -1,0 +1,16 @@
+{
+  "name": "teste-socket",
+  "version": "1.0.0",
+  "description": "Teste WebSocket para laboratório virtual",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "author": "Gustavo Vieira Alcantara",
+  "license": "ISC",
+  "dependencies": {
+    "avrgirl-arduino": "^5.0.1",
+    "node-cmd": "^4.0.0"
+  }
+}

@@ -1,0 +1,72 @@
+body{
+    max-width: 100%;
+    position: relative;
+}
+#Monitor, #Abrir , #file{
+    display: none;
+}
+.row{
+    width: 95%;
+}
+.blue{
+    background-color: #006468;
+}
+.light_blue{
+    background-color: #17a1a5;
+}
+.lighter_blue{
+    background-color: #17a1a5;
+}
+.btn_blue{
+    background-color: #4db7bb;
+    border-color: #4db7bb;
+}
+label{
+    margin: 0;
+}
+.right{
+    float: right;
+}
+.center{
+    float: center;
+}
+.padding{
+    padding-left: 10px;
+}
+.flex{
+    display: flexbox;
+}
+.serial{
+    padding: 10px;
+    position: absolute;
+    visibility: hidden;
+    z-index: 5;
+}
+.file{
+    color: #4db7bb;
+    margin-bottom: -10px;
+    padding-bottom: 10px;
+}
+.white{
+    color: white;
+}
+.black{
+    background-color: black;
+}
+.ide{
+    margin: 0;
+    position: relative;
+}
+.relatorio{
+    color: white;
+    width: 100%;
+    font-family: Consolas;
+    font-size: 12px;
+}
+.estagio{
+    min-height: 15px;
+}
+.margin-bottom{
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
+}

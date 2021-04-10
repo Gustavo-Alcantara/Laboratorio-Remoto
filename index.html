@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Metas requiridos-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Lab Remoto</title>
+        <!-- Bootstrap CSS -->
+        <link rel="shortcut icon" href="/img/ico.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/theme/3024-night.min.css" integrity="sha512-SbB0juc9/nEA5PEN7S+lnglc7wADe2DLKZKXn3D+eyebL06fTbFHNzgMlpX9oqFjWEKZ6uH7zNCUSv+j9Dpwpw==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="/css/estilos.css">
+    </head>
+    <body>
+        <div class = "conteiner-fluid">
+            <div class="row align-items-start justify-content-md-center">
+                <div class="col d-flex">
+                    <img src="/img/ide.png" id ="stream" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-md-auto"></div>
+                <div class="col">
+                    <div class="center">    
+                        <form action="" id="ide">
+                            <div class='row align-items-center blue'>
+                                <div class="col margin-bottom no-gutters" style="margin:0; padding-bottom: 5px; padding-top: 5px;">
+                                    <button id="Verificar" type="button" style="margin-left: 1em" class="btn btn-light rounded-circle btn_blue"><img src="/img/verificar.png" alt=""></button>
+        
+                                    <button id='Carregar' type="button" style="margin-right:0.25em" class="btn btn-light rounded-circle btn_blue "><img src="/img/seta-para-lado.png" alt=""></button>    
+                                    <label for="Abrir" id="Abrir arquivo" class="btn btn-light btn-sm btn_blue rounded-0">
+                                        <img src="/img/seta-para-cima.png" alt="" srcset="" id='img_lbl' >
+                                    </label>
+                                    <input type="file" name="Abrir" id="Abrir" accept=".c, .ino">
+                                    <pre id='file'></pre>
+                                    <button id='Salvar' type="button" class="btn btn-light btn-sm btn_blue rounded-0"><a id="download" download="arduino.ino" href="" ><img src="/img/seta-para-baixo.png" alt=""></a></button>
+                                    <span id="secao_botoes" class="white relatorio"></span>
+                                </div>
+                                <div class="col-md-auto">
+                                </div>
+                                <div class="col col-lg-2">
+                                    <span id="span_monitor" class="white right no-gutters relatorio" ></span>
+                                </div>
+                                <div class="col col-lg-2" >
+                                    <label for="Monitor" id="lbl_monitor" class="btn btn-light btn-sm right btn_blue rounded-0" data-toggle="buttons" style="margin-right: 1em;"><img src="/img/lupa.png" alt=""></label>
+                                    <input type="button" value="" id='Monitor'>
+                                </div>
+                            </div>
+                            <div class="row light_blue" width=""style="padding-top: 5px;">
+                                <div class="col padding">
+                                    <span id="nome_arquivo"  class="btn btn-light btn-sm file">main.c</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <textarea name="codigo" id="codigo" style="resize: none;" cols="30" rows="20" width='100%'>
+#define F_CPU 16000000UL // Clock frequency, needed to delay functions
+#include <avr/io.h> // Register definitions
+#include <util/delay.h> // Delay functions
+int main(){
+    DDRB |= (1<<PB5); 
+    while(1){ 
+        PORTB |= (1<<PB5);
+        _delay_ms(1000);
+        PORTB &= ~(1<<PB5);
+        _delay_ms(1000);
+    }
+    return 0;
+}
+                                </textarea>
+                            </div>
+                            <div class="row lighter_blue align-items-center">
+                                <div class="col">
+                                    <slam class="aberto white" id="estagio"></slam>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <textarea name="" id="relatorio" cols="30" class='relatorio black' rows="5" readonly width='100%' ></textarea>
+                            </div>
+                            <div class="row blue">
+                                <p class="num white relatorio" id='num'></p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form action="" id ="serial" class="serial border">
+                            <div id="monitor">
+                                <div class="input-group mb-3">
+                                    <input type="text" placeholder="Input">
+                                    <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" style="background-color: white;" type="button">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <textarea name="" id="retorno" cols="30" rows="10" class="form-control" style="resize: both;" disabled></textarea>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/clike/clike.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/addon/edit/matchbrackets.min.js"></script>
+        <script src="/js/front.js"></script>
+        <script src = "/js/client.js"></script>
+    </body>
+</html>
